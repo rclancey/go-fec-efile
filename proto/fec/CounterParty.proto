@@ -1,0 +1,55 @@
+package fec;
+
+import "fec/Common.proto";
+import "fec/Election.proto";
+
+enum EntityType {
+    CANDIDATE           = 1; // CAN
+    CANDIDATE_COMMITTEE = 2; // CCM
+    COMMITTEE           = 3; // COM
+    INDIVIDUAL          = 4; // IND
+    ORGANIZATION        = 5; // ORG
+    PAC                 = 6; // PAC
+    PARTY               = 7; // PTY
+}
+
+message Committee {
+    optional int64 id        = 1;
+    required string fec_id   = 2;
+    required string name     = 3;
+    required Address address = 4;
+}
+
+message Candidate {
+    optional int64 id        = 1;
+    required string fec_id   = 2;
+    required Name name       = 3;
+    required Address address = 4;
+    required Office office   = 5;
+    optional string state    = 6;
+    optional uint32 district = 7;
+}
+
+message Organization {
+    optional int64 id        = 1;
+    required string name     = 2;
+    required Address address = 3;
+}
+
+message Individual {
+    optional int64 id          = 1;
+    required Name name         = 2;
+    required Address address   = 3;
+    optional string employer   = 4;
+    optional string occupation = 5;
+}
+
+message CounterParty {
+    optional int64 id                  = 1;
+    required EntityType type           = 2;
+    optional Candidate candidate       = 3;
+    optional Committee committee       = 4;
+    optional Organization organization = 5;
+    optional Individual individual     = 6;
+}
+

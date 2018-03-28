@@ -1,0 +1,36 @@
+package fec;
+
+import "fec/Common.proto";
+import "fec/CounterParty.proto";
+import "fec/Election.proto";
+import "fec/Loan.proto";
+
+enum TransactionType {
+    RECEIPT = 1;
+    DISBURSEMENT = 2;
+}
+
+message Transaction {
+    optional int64 id                     = 1;
+    required TransactionType type         = 2;
+    required double amount                = 3;
+
+    required CounterParty counterparty    = 4;
+    optional Organization conduit         = 5;
+
+    optional Date transfer_date           = 6;
+    optional Date pledge_date             = 7;
+
+    optional TransactionCategory category = 8;
+    optional ActivityType activity        = 9;
+
+    optional string purpose               = 10;
+    optional Election election            = 11;
+    optional SupportOppose support_oppose = 12;
+    optional Candidate target_candidate   = 13;
+
+    optional Loan loan                    = 14;
+
+    optional string account_ref           = 15;
+    optional string memo                  = 16;
+}

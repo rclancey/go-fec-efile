@@ -1,0 +1,25 @@
+package fec;
+
+import "fec/Common.proto";
+import "fec/CounterParty.proto";
+import "fec/Election.proto";
+
+message LoanGuarantee {
+    required Individual guarantor = 1;
+    optional double amount        = 2;
+}
+
+message Loan {
+    optional int64 id                 = 1;
+    required CounterParty lender      = 2;
+    required Election election        = 3;
+    required double original_amount   = 4;
+    required Date incurred_date       = 5;
+    optional Date due_date            = 6;
+    required double interest_rate     = 7;
+    required bool secured             = 8;
+    required bool personal_funds      = 9;
+    optional string memo              = 10;
+    repeated LaonGuarantee guarantees = 11;
+}
+

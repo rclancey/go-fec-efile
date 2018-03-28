@@ -1,0 +1,28 @@
+package fec;
+
+import "fec/Common.proto";
+
+enum Office {
+    PRESIDENT = 1; // P
+    SENATE    = 2; // S
+    HOUSE     = 3; // H
+}
+
+enum ElectionType {
+    GENERAL    = 1; // G
+    PRIMARY    = 2; // P
+    RUNOFF     = 3; // R
+    SPECIAL    = 4; // S
+    CONVENTION = 5; // C
+    RECOUNT    = 6; // E
+    OTHER      = 7; // O
+}
+
+message Election {
+    optional int64 id           = 1;
+    required ElectionType type  = 2;
+    required Date date          = 3;
+    optional State state        = 4;
+    optional string description = 5;
+}
+
